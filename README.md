@@ -10,7 +10,7 @@
 ## Usage:
 
 The following workflow will do the following:
-- Verify that the workflow has been run before June 21st Greenwich Mean Time (GMT)
+- Verify that the workflow has been run before June 21st on Greenwich Mean Time (GMT)
 - Require that there exist files on the paths `mp1/Makefile` and `.github/workflows/mp1-autograder-action.yml`.
 - Require that the contents of `mp1/tests/test-file.cpp` and `reference/tests/test-file.cpp` are the same, and the contents of `mp1/Makefile` and `reference/Makefile` are the same.
 
