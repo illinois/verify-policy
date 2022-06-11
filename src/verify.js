@@ -10,7 +10,7 @@ const checkDate = (rawDueDate) => {
         return;
     }
     if (currDate > dueDate) {
-        core.setFailed(`Error! Workflow run after specified due date.`);
+        core.setFailed(`Workflow run after specified due date.`);
         return;
     }
 }
@@ -19,7 +19,7 @@ const checkRequiredFiles = (rawFileList) => {
     const fileList = rawFileList.split(',');
     for (f in fileList) {
         if (!fs.existsSync(fileList[f].trim())) {
-            core.setFailed(`Error! Required file ${fileList[f]} does not exist in this repository.`);
+            core.setFailed(`Required file ${fileList[f]} does not exist in this repository.`);
         }
     }
 }
@@ -56,4 +56,5 @@ const requiredFiles = core.getInput('required_files');
 if (requiredFiles) checkRequiredFiles(requiredFiles);
 
 const referenceFiles = core.getInput('reference_files');
-if (referenceFiles) checkReferenceFiles(referenceFiles);
+if (referenceFiles) checkRefe
+renceFiles(referenceFiles);
