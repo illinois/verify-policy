@@ -20,7 +20,7 @@ const checkRequiredFiles = (rawFileList) => {
     const fileList = rawFileList.split(',');
     for (f in fileList) {
         if (!fs.existsSync(fileList[f].trim())) {
-            core.setFailed(`Error! Required file ${fileList[file]} does not exist in this repository.`);
+            core.setFailed(`Error! Required file ${fileList[f]} does not exist in this repository.`);
         }
     }
 }
