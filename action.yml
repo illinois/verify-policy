@@ -1,0 +1,31 @@
+name: verify-policy
+description: "Performs various checks at workflow runtime to ensure adherence to assignment policy"
+inputs:
+  due_date:
+    description: >
+      An ISO 8601 formatted time stamp describing the exact due date and time of the assignment. `verify-policy`
+      will reference this input against the latest commit of the submitted assignment, and will fail if the commit
+      time is after the time specified by `due_date`. If `due_date` is left blank, `verify-policy` will skip
+      this check.
+    required: false
+    default: ''
+  required_files:
+    description: >
+      A comma-separated list of filepaths (using $GITHUB_WORKSPACE$ as the base directory) of files/directories
+      that are required to be in the assignment submission. If any file is not located in the exact path as
+      specified by `required_files`, `verify_policy` will fail. If `required_files` is left blank, `verify-policy`
+      will skip this check.
+    required: false
+    default: ''
+  reference_files:
+    description: >
+      A comma-separated list of filepaths (using $GITHUB_WORKSPACE$ as the base directory) of files that will
+      be used as reference files by `verify-policy`. The format of the path should be of the form
+      `path/to/reference.txt:path/to/student_file.txt`. In the event that the contents of any pair of files
+      specified in `reference_files` differ, `verify_policy` will fail. If `reference_files` is left blank,
+      `verify_policy` will skip this check.
+    required: false
+    default: ''
+runs:
+  using: "node12"
+  main: "./dist/index.js"
