@@ -56,5 +56,4 @@ const requiredFiles = core.getInput('required_files');
 if (requiredFiles) checkRequiredFiles(requiredFiles);
 
 const referenceFiles = core.getInput('reference_files');
-if (referenceFiles) checkRefe
-renceFiles(referenceFiles);
+if (referenceFiles) checkReferenceFiles(referenceFiles);
