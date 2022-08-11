@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const fs = require('fs');
+const path = require('path');
 const { DateTime } = require('luxon');
 
 function parseDate(rawDate) {
