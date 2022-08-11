@@ -1,7 +1,7 @@
 name: verify-policy
 description: "Performs various checks at workflow runtime to ensure adherence to assignment policy"
 inputs:
-  due_date:
+  due:
     description: >
       An ISO 8601 formatted time stamp describing the exact due date and time of the assignment. `verify-policy`
       will reference this input against the latest commit of the submitted assignment, and will fail if the commit
