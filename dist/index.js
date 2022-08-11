@@ -10423,7 +10423,7 @@ function referenceRecursive(src, ref) {
 	  });
 	} else {
         let srcFile = fs.readFileSync(src, 'utf8');
-        let refFile = fs.readFileSync(dest, 'utf8');
+        let refFile = fs.readFileSync(ref, 'utf8');
         if (srcFile != refFile) {
             core.setFailed(`Contents of files ${src} and ${ref} are not equal. Exiting...`);
         }
