@@ -52,16 +52,6 @@ function checkRequiredFiles(rawFileList) {
     }
 }
 
-function openFile(path) {
-    try {
-        var fileData = fs.readFileSync(path, 'utf8');
-    } catch (err) {
-        core.setFailed(`Error when attempting to open file ${path} with error message:\n ${err.message}`);
-        return '';
-    }
-    return fileData;
-}
-
 function checkReferenceFiles(rawRefList) {
     const refList = rawRefList.split(',');
     var refPairs = [];
@@ -84,9 +74,9 @@ function referenceRecursive(src, ref) {
 						   path.join(ref, child));
 	  });
 	} else {
-        let ref = openFile(src, 'utf8');
-        let comp = openFile(ref, 'utf8');
-        if (ref != comp) {
+        let srcFile = fs.readFileSync(src, 'utf8');
+        let refFile = fs.readFileSync(dest, 'utf8');
+        if (srcFile != refFile) {
             core.setFailed(`Contents of files ${src} and ${ref} are not equal. Exiting...`);
         }
 	}
