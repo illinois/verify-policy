@@ -10361,7 +10361,7 @@ function parseDate(rawDate) {
         const dateDict = parseDateObject(rawDate);
         console.log(dateDict[0]);
         console.log(dateDict[1]);
-        date = DateTime.fromObject(dateDict[1], dateDict[0]);
+        date = DateTime.fromObject(dateDict[0], dateDict[1]);
         if (!date.isValid) core.setFailed(`No valid date format provided. Exiting...`);
 }
 
@@ -10375,7 +10375,7 @@ function parseDateObject(dateDict) {
             core.setFailed(`Failed to parse copy list line ${splitDict[i]}. Exiting...`);
             return;
         }
-        parseInt(pair[1]) != NaN ? d[pair[0].toLowerCase()] = Number(pair[1]) : opts[pair[0].toLowerCase()] = pair[1];
+        isNan(parseInt(pair[1])) ? opts[pair[0].toLowerCase()] = pair[1] : d[pair[0].toLowerCase()] = Number(pair[1]);
         
     }
     return [d, opts];
