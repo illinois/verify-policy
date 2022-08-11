@@ -10372,10 +10372,10 @@ function parseDateObject(dateDict) {
     for (let i = 0; i < splitDict.length; i++) {
         const pair = splitDict[i].split(':');
         if (pair.length != 2) {
-            core.setFailed(`Failed to parse copy list line ${splitDict[i]}. Exiting...`);
+            core.setFailed(`Failed to parse ${splitDict[i]}. Exiting...`);
             return;
         }
-        isNan(parseInt(pair[1])) ? opts[pair[0].toLowerCase()] = pair[1] : d[pair[0].toLowerCase()] = Number(pair[1]);
+        isNaN(parseInt(pair[1])) ? opts[pair[0].toLowerCase()] = pair[1] : d[pair[0].toLowerCase()] = Number(pair[1]);
         
     }
     return [d, opts];
