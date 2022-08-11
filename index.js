@@ -84,8 +84,8 @@ function referenceRecursive(src, ref) {
 						   path.join(ref, child));
 	  });
 	} else {
-        let ref = openFile(refPairs[p][0].trim());
-        let comp = openFile(refPairs[p][1].trim());
+        let ref = openFile(src, 'utf8');
+        let comp = openFile(ref, 'utf8');
         if (ref != comp) {
             core.setFailed(`Contents of files ${src} and ${ref} are not equal. Exiting...`);
         }
