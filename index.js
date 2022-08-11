@@ -11,11 +11,10 @@ function parseDate(rawDate) {
 
     // Date object
     console.log('Checking for date dictionary...');
-        const dateDict = parseDateObject(rawDate);
-        console.log(dateDict[0]);
-        console.log(dateDict[1]);
-        date = DateTime.fromObject(dateDict[0], dateDict[1]);
-        if (!date.isValid) core.setFailed(`No valid date format provided. Exiting...`);
+    const dateDict = parseDateObject(rawDate);
+    date = DateTime.fromObject(dateDict[0], dateDict[1]);
+    if (!date.isValid) core.setFailed(`No valid date format provided. Exiting...`);
+    return date;
 }
 
 function parseDateObject(dateDict) {
@@ -29,17 +28,17 @@ function parseDateObject(dateDict) {
             return;
         }
         isNaN(parseInt(pair[1])) ? opts[pair[0].toLowerCase()] = pair[1] : d[pair[0].toLowerCase()] = Number(pair[1]);
-        
     }
     return [d, opts];
 }
 
 function checkDate(rawDueDate) {
     const currDate = DateTime.now();
+    console.log(`Current time: ${currDate.toString()}`)
     var dueDate = parseDate(rawDueDate);
+    console.log(`Due date: ${dueDate.toString()}`)
     if (currDate > dueDate) {
         core.setFailed(`Workflow run at time ${currDate.toString()} is after specified due date ${dueDate.toString()}`);
-        return;
     }
 }
 
