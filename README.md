@@ -18,8 +18,8 @@ The following workflow will do the following:
 name: Test
 runs-on: ubuntu-latest
 steps:
-  - uses: actions/checkout@v2
-  - uses: illinois/verify-policy@v3
+  - uses: actions/checkout@v4
+  - uses: illinois/verify-policy@v2
     with:
       due_date: '2022-06-21T00:00:00+00:00'
       required_files: 'mp1/Makefile, .github/workflows/mp1-autograder-action.yml'
